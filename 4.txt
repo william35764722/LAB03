@@ -1,0 +1,29 @@
+const byte potPin = A0;
+float val;
+float sensorValue;
+float sensorVoltage;
+float R1;
+float R = 5000000;
+void setup()
+{
+  pinMode(14, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  byte i;
+  for (i = 0; i <= 5; i++)
+    sensorValue = 0.7 * sensorValue + 0.3 * analogRead(A0);
+  sensorVoltage = sensorValue * 2.5 / 4095;
+  R1 = sensorVoltage * R / 2.5;
+  val = analogRead(potPin);
+  Serial.print("analogRead=");
+  Serial.print(val);
+  Serial.print(" R1=");
+  Serial.print(R1);
+  Serial.print(" sensorVoltage=");
+  Serial.println(sensorVoltage);
+
+  delay(500);
+}
