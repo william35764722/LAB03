@@ -1,0 +1,20 @@
+float Analogin=0;
+float k=0;
+float Vin;
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(14,INPUT);
+}
+void loop()
+{
+  byte i;
+for (i=0;i<=5;i++)
+Analogin = 0.7* Analogin + 0.3* analogRead(A0);
+Vin = Analogin*2.5 / 4095;
+Serial.print("Analogin=");
+Serial.println(Analogin);
+Serial.print("Vin=");
+Serial.println(Vin);
+delay(500);
+}
